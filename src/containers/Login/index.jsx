@@ -61,12 +61,7 @@ export default function Login() {
               required
             />
           </InputContainer>
-          <Link
-            as="span"
-            onClick={() => console.log('Forgot password clicked')}
-          >
-            Esqueci minha senha
-          </Link>
+          
           <Button type="submit">Entrar</Button>
         </Form>
         <Link as="span" onClick={() => console.log('Sign up clicked')}>

@@ -16,7 +16,7 @@ export const LeftContainer = styled.div`
 
   img {
     max-height: 950px;
-    opacity: 0.91;
+    opacity: 0.87;
     height: 500px;
     max-width: auto;
     border-radius: 10px;
@@ -61,19 +61,19 @@ export const Title = styled.h2`
   margin-bottom: 40px;
   font-family: Lilita One;
   color: #ec8a23;
-  text-shadow: 1px 1px 10px rgba(0, 0, 249, 0.6);
+  text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
 
   span {
     color: #cc2827;
     font-family: Lilita One;
-    text-shadow: 1px 1px 10px rgba(0, 0, 249, 0.6);
+    text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
     font-size: 44px;
   }
 
   .burger {
     color: #ec8a23;
     font-family: Lilita One;
-    text-shadow: 1px 1px 5px rgba(0, 0, 249, 0.6);
+    text-shadow: 1px 1px 5px rgba(0, 0, 29, 0.6);
     font-size: 44px;
   }
 `
@@ -89,21 +89,27 @@ export const Form = styled.form`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 15px;
+  justify-content:center;
+  
 
   input {
+    opacity: 0.7;
     width: 100%;
-    height: 42px;
+    height: 36px;
     padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
+
   }
 
   label {
-    font-size: 18px;
+    font-size: 20px;
     color: #ccc;
     font-family: Lilita One;
-    text-shadow: 1px 1px 10px rgba(0, 0, 249, 0.6);
+    left: 0;
+    text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: black;
   }
@@ -111,12 +117,12 @@ export const InputContainer = styled.div`
 
 export const Link = styled.a`
   color: #ec8a23;
-  font-size: 18px;
+  font-size: 20px;
   text-decoration: none;
   cursor: pointer;
   padding-top: 10px;
   font-family: Lilita One;
-  text-shadow: 1px 1px 10px rgba(0, 0, 249, 0.6);
+  text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
   -webkit-text-stroke-width: 0.1px;
   -webkit-text-stroke-color: black;
 
@@ -127,13 +133,17 @@ export const Link = styled.a`
 
 export const Button = styled.button`
   width: 100%;
-  height: 42px;
+  height: 44px;
+  
   background: #cc2827;
   border: none;
   border-radius: 10px;
   color: #fff;
   font-family: Lilita One;
   font-size: 24px;
+  text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
+  box-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
+
 
   &:hover {
     opacity: 0.8;
