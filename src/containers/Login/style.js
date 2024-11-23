@@ -34,7 +34,7 @@ export const Background = styled.div`
   .conteudo-background {
     height: 100%;
     width: auto;
-
+    opacity: 0.88;
     min-width: max-content;
     max-width: max-content;
     position: fixed;
@@ -51,7 +51,7 @@ export const RightContainer = styled.div`
   justify-content: center;
   padding: 0 40px;
   background-color: #000;
-  background-image: url(${BG2});
+  background-image: url(${BG2});  
   z-index: 10;
 `
 
@@ -61,12 +61,11 @@ export const Title = styled.h2`
   margin-bottom: 40px;
   font-family: Lilita One;
   color: #ec8a23;
-  text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
 
   span {
     color: #cc2827;
     font-family: Lilita One;
-    text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
+    text-shadow: 1px 1px 10px solid rgba(0, 0, 29, 0.6);
     font-size: 44px;
   }
 
@@ -105,9 +104,9 @@ export const InputContainer = styled.div`
   }
 
   label {
-    font-size: 20px;
+    font-size: 24px;
     color: #ccc;
-    font-family: Lilita One;
+    font-family: Road Rage;
     left: 0;
     text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
     -webkit-text-stroke-width: 0.1px;
@@ -117,11 +116,11 @@ export const InputContainer = styled.div`
 
 export const Link = styled.a`
   color: #ec8a23;
-  font-size: 20px;
+  font-size: 28px;
   text-decoration: none;
   cursor: pointer;
   padding-top: 10px;
-  font-family: Lilita One;
+  font-family: Road Rage;
   text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
   -webkit-text-stroke-width: 0.1px;
   -webkit-text-stroke-color: black;
@@ -139,8 +138,8 @@ export const Button = styled.button`
   border: none;
   border-radius: 10px;
   color: #fff;
-  font-family: Lilita One;
-  font-size: 24px;
+  font-family: Road Rage;
+  font-size: 32px;
   text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
   box-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
 

@@ -38,7 +38,7 @@ export default function Login() {
           Bem vindo ao <span>MONSTER </span>
           <span className='burger'>BURGER</span>
           <br />
-          Acesse com seu <span>login e senha</span>
+          Acesse com seu <span>e-mail</span> e<span> senha</span>
         </Title>
         <Form onSubmit={handleSubmit}>
           <InputContainer>
@@ -68,7 +68,6 @@ export default function Login() {
           Não possui conta? Clique Aqui!
         </Link>
       </RightContainer>
-      <a href="https://www.vecteezy.com/free-videos/motion-background"></a>
     </Container>
   )
 }
