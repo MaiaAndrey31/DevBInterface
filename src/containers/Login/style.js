@@ -61,12 +61,14 @@ export const Title = styled.h2`
   margin-bottom: 40px;
   font-family: Lilita One;
   color: #ec8a23;
+  font-weight: 400;
 
   span {
     color: #cc2827;
     font-family: Lilita One;
     text-shadow: 1px 1px 10px solid rgba(0, 0, 29, 0.6);
     font-size: 44px;
+    font-weight: 400;
   }
 
   .burger {
@@ -74,6 +76,7 @@ export const Title = styled.h2`
     font-family: Lilita One;
     text-shadow: 1px 1px 5px rgba(0, 0, 29, 0.6);
     font-size: 44px;
+    font-weight: 400;
   }
 `
 
