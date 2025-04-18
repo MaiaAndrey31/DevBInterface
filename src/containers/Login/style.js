@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-
 import BG2 from '../../assets/bg-1.svg'
+import { theme } from '../../styles/theme'
 
 export const Container = styled.div`
   width: 100%;
@@ -50,7 +50,7 @@ export const RightContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 40px;
-  background-color: #000;
+  background-color: ${theme.colors.backgound};
   background-image: url(${BG2});  
   z-index: 10;
 `
@@ -60,11 +60,11 @@ export const Title = styled.h2`
   font-size: 38px;
   margin-bottom: 40px;
   font-family: Lilita One;
-  color: #ec8a23;
+  color:${theme.colors.secondary};
   font-weight: 400;
 
   span {
-    color: #cc2827;
+    color:${theme.colors.error};
     font-family: Lilita One;
     text-shadow: 1px 1px 10px solid rgba(0, 0, 29, 0.6);
     font-size: 44px;
@@ -72,7 +72,7 @@ export const Title = styled.h2`
   }
 
   .burger {
-    color: #ec8a23;
+    color:${theme.colors.secondary};
     font-family: Lilita One;
     text-shadow: 1px 1px 5px rgba(0, 0, 29, 0.6);
     font-size: 44px;
@@ -108,7 +108,7 @@ export const InputContainer = styled.div`
 
   label {
     font-size: 24px;
-    color: #ccc;
+    color: ${theme.colors.secondary};
     font-family: Road Rage;
     left: 0;
     text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
@@ -118,7 +118,7 @@ export const InputContainer = styled.div`
 `
 
 export const Link = styled.a`
-  color: #ec8a23;
+  color:${theme.colors.secondary};
   font-size: 28px;
   text-decoration: none;
   cursor: pointer;
@@ -133,21 +133,3 @@ export const Link = styled.a`
   }
 `
 
-export const Button = styled.button`
-  width: 100%;
-  height: 44px;
-  
-  background: #cc2827;
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-  font-family: Road Rage;
-  font-size: 32px;
-  text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
-  box-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
-
-
-  &:hover {
-    opacity: 0.8;
-  }
-`

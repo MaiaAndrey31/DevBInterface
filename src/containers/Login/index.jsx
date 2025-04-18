@@ -7,9 +7,10 @@ import {
   Form,
   InputContainer,
   Link,
-  Button,
+  
   Background
 } from './style'
+import {Button} from '../../components/Button'
 import Logo from '../../assets/LogoMonster2.png'
 import Fire from '../../assets/fireVid2.mp4'
 
