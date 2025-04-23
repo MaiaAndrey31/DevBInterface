@@ -16,6 +16,14 @@ import Logo from '../../assets/LogoMonster2.png'
 import Fire from '../../assets/fireVid2.mp4'
 
 export default function Login() {
+
+
+  const schema = yup
+    .object({
+      email: yup.string().email().required(),
+      password: yup.string().min(6).required()
+    })
+    .required()
   const {
     register,
     handleSubmit,
@@ -24,12 +32,7 @@ export default function Login() {
   
   const onSubmit = (data) => console.log(data)
 
-  const schema = yup
-    .object({
-      email: yup.string().email().required(),
-      password: yup.string().min(6).required()
-    })
-    .required()
+  
   
 
   return (

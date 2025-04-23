@@ -49,9 +49,9 @@ export const RightContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;
-  background-color: ${theme.colors.backgound};
+  padding: 0 40px;  
   background-image: url(${BG2});  
+  object-fit: cover;
   z-index: 10;
 `
 
