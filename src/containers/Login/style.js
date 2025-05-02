@@ -51,7 +51,7 @@ export const RightContainer = styled.div`
   justify-content: center;
   padding: 0 40px;  
   background-image: url(${BG2});  
-  object-fit: cover;
+  background-size: cover;
   z-index: 10;
 `
 
@@ -107,13 +107,21 @@ export const InputContainer = styled.div`
   }
 
   label {
-    font-size: 24px;
+    font-size: 2rem;
     color: ${theme.colors.secondary};
     font-family: Road Rage;
     left: 0;
     text-shadow: 1px 1px 10px rgba(0, 0, 29, 0.6);
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: black;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 80%;
+    color: ${theme.colors.error};
+    font-weight: 600;
+    height: 10px;
   }
 `
 
