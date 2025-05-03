@@ -119,7 +119,7 @@ export const InputContainer = styled.div`
   p {
     font-size: 14px;
     line-height: 80%;
-    color: ${theme.colors.error};
+    color: ${theme.colors.lighttext};
     font-weight: 600;
     height: 10px;
   }
