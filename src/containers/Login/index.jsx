@@ -15,15 +15,19 @@ import {
 import { Button } from '../../components/Button'
 import Logo from '../../assets/LogoMonster2.png'
 import Fire from '../../assets/fireVid2.mp4'
-import {api} from '../../services/api'
+import { api } from '../../services/api'
 
 export default function Login() {
-
-
   const schema = yup
     .object({
-      email: yup.string().email('Digite um e-mail válido!').required('O e-mail é obrigatório'),
-      password: yup.string().min(6, 'A senha deve ter no mínimo 6 caracteres').required('Digite uma Senha')
+      email: yup
+        .string()
+        .email('Digite um e-mail válido!')
+        .required('O e-mail é obrigatório'),
+      password: yup
+        .string()
+        .min(6, 'A senha deve ter no mínimo 6 caracteres')
+        .required('Digite uma Senha')
     })
     .required()
   const {
@@ -31,26 +35,35 @@ export default function Login() {
     handleSubmit,
     formState: { errors }
   } = useForm({ resolver: yupResolver(schema) })
-  
-  const onSubmit = async (data) => {
-    
-    await toast.promise(api.post('/session', {
-      email: data.email,
-      password: data.password
-    }),
-    {
-      pending: 'Verificando seus dados de Login ⏳',
-      success: 'Login feito com sucesso! ✅',
-      error: 'Email ou senha incorretos! ⛔'
-    }
-  ) 
 
-    
+  const onSubmit = async (data) => {
+
+    try {const { status } = await api.post(
+      '/session',
+      {
+        email: data.email,
+        password: data.password
+      },
+      {
+        validateStatus: () => true
+      },
+    )
+
+    if (status === 200 || status === 201){
+      toast.success('Conta Criada com Sucesso! ✅')
+    } else if(status === 409){
+      toast.error('email já cadastrado! Faça o Login para continuar')
+    } else {
+      throw new Error()
+    }      
+    } catch (error) {
+      toast.error('🤔 Falaha no Sistema! Tente novamente!')
+    }
   }
 
-  
-  
 
+
+    
   return (
     <Container>
       <LeftContainer>
@@ -70,29 +83,19 @@ export default function Login() {
         </Title>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputContainer>
-            <label >Email</label>
-            <input
-              {...register('email')}
-              type="email"
-              
-            />
+            <label>Email</label>
+            <input {...register('email')} type="email" />
             <p>{errors?.email?.message}</p>
           </InputContainer>
           <InputContainer>
-            <label >Senha</label>
-            <input
-              {...register('password')}
-              type="password"
-              
-            />
+            <label>Senha</label>
+            <input {...register('password')} type="password" />
             <p>{errors?.password?.message}</p>
           </InputContainer>
 
           <Button type="submit">Entrar</Button>
         </Form>
-        <Link >
-          Não possui conta? Clique Aqui!
-        </Link>
+        <Link>Não possui conta? Clique Aqui!</Link>
       </RightContainer>
     </Container>
   )
