@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import BG2 from '../../assets/bg-1.svg'
 import { theme } from '../../styles/theme'
+import { Link as ReactLink } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
@@ -125,7 +126,7 @@ export const InputContainer = styled.div`
   }
 `
 
-export const Link = styled.a`
+export const Link = styled(ReactLink)`
   color:${theme.colors.secondary};
   font-size: 28px;
   text-decoration: none;

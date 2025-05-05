@@ -16,8 +16,11 @@ import { Button } from '../../components/Button'
 import Logo from '../../assets/LogoMonster2.png'
 import Fire from '../../assets/fireVid2.mp4'
 import {api} from '../../services/api'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function Register() {
+  const navigate = useNavigate()
 
 
   const schema = yup
@@ -35,21 +38,33 @@ export default function Register() {
   } = useForm({ resolver: yupResolver(schema) })
   
   const onSubmit = async (data) => {
-    
-    await toast.promise(api.post('/users', {
-      name: data.name,
-      email: data.email,
-      password: data.password
-    }),
-    {
-      pending: 'Verificando seus dados de Login ⏳',
-      success: 'Cadastro feito com sucesso! ✅',
-      error: 'Ops algo deu errado, tente novamente! ⛔'
+  
+      try {const { status } = await api.post(
+        '/users',
+        {
+          name: data.name,
+          email: data.email,
+          password: data.password
+        },
+        {
+          validateStatus: () => true
+        },
+      )
+  
+      if (status === 200 || status === 201){
+        setTimeout( () => {
+          navigate('/login')
+        },2000)
+        toast.success('Conta Criada com Sucesso! ✅')
+      } else if(status === 409){
+        toast.error('email já cadastrado! Faça o Login para continuar')
+      } else {
+        throw new Error()
+      }      
+      } catch (error) {
+        toast.error('🤔 Falaha no Sistema! Tente novamente!')
+      }
     }
-  ) 
-
-    
-  }
 
   
   
@@ -108,7 +123,7 @@ export default function Register() {
 
           <Button type="submit">Cadastrar</Button>
         </Form>
-        <Link >
+        <Link to='/login'>
           Já possui conta? Faça Login Aqui!
         </Link>
       </RightContainer>

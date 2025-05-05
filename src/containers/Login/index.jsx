@@ -16,8 +16,11 @@ import { Button } from '../../components/Button'
 import Logo from '../../assets/LogoMonster2.png'
 import Fire from '../../assets/fireVid2.mp4'
 import { api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
+  const navigate = useNavigate()
+
   const schema = yup
     .object({
       email: yup
@@ -38,32 +41,31 @@ export default function Login() {
 
   const onSubmit = async (data) => {
 
-    try {const { status } = await api.post(
-      '/session',
-      {
-        email: data.email,
-        password: data.password
-      },
-      {
-        validateStatus: () => true
-      },
-    )
-
-    if (status === 200 || status === 201){
-      toast.success('Conta Criada com Sucesso! ✅')
-    } else if(status === 409){
-      toast.error('email já cadastrado! Faça o Login para continuar')
-    } else {
-      throw new Error()
-    }      
-    } catch (error) {
-      toast.error('🤔 Falaha no Sistema! Tente novamente!')
-    }
-  }
-
-
-
+    try {const {status} = await api.post ('/session', {
+      email: data.email,
+      password: data.password
+    },
+  {
+    validateStatus: () => true
+  },
+)
+if (status === 200 || status === 201){
+  setTimeout( () => {
+    navigate('/')
+  },2000)
+        toast.success('Olá! Seja Bem Vindo! ✅')
+      } else if(status === 409){
+        toast.error('Email ou Senha incorretos! 😔')
+      } else {
+        throw new Error()
+      }      
+     } catch (error) {
+             toast.error('🤔 Falaha no Sistema! Tente novamente!')
+           }
     
+    
+    }
+
   return (
     <Container>
       <LeftContainer>
@@ -95,7 +97,7 @@ export default function Login() {
 
           <Button type="submit">Entrar</Button>
         </Form>
-        <Link>Não possui conta? Clique Aqui!</Link>
+        <Link to="/cadastro">Não possui conta? Clique Aqui!</Link>
       </RightContainer>
     </Container>
   )
