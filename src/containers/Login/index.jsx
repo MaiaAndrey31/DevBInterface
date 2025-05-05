@@ -40,31 +40,39 @@ export default function Login() {
   } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = async (data) => {
+    try {
+      const {
+        status,
+        data: { token }
+      } = await api.post(
+        '/session',
+        {
+          email: data.email,
+          password: data.password
+        },
+        {
+          validateStatus: () => true
+        }
+      )
 
-    try {const {status} = await api.post ('/session', {
-      email: data.email,
-      password: data.password
-    },
-  {
-    validateStatus: () => true
-  },
-)
-if (status === 200 || status === 201){
-  setTimeout( () => {
-    navigate('/')
-  },2000)
+      localStorage.setItem('token', token)
+      
+      if (status === 200 || status === 201) {
+        setTimeout(() => {
+          navigate('/')
+        }, 2000)
         toast.success('Olá! Seja Bem Vindo! ✅')
-      } else if(status === 409){
+      } else if (status === 409) {
         toast.error('Email ou Senha incorretos! 😔')
       } else {
         throw new Error()
-      }      
-     } catch (error) {
-             toast.error('🤔 Falaha no Sistema! Tente novamente!')
-           }
-    
-    
+      }
+    } catch (error) {
+      toast.error('🤔 Falaha no Sistema! Tente novamente!')
     }
+
+    
+  }
 
   return (
     <Container>
