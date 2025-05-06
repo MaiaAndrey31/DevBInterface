@@ -11,6 +11,15 @@ overflow-x: hidden;
 .react-multi-carousel-list{
     overflow: visible;
 }
+.react-multiple-carousel__arrow--left {
+    left: 1rem;
+    top: 0.625rem;
+}
+
+.react-multiple-carousel__arrow--right {
+    right: 1rem;
+    top: 0.625rem;
+}
 
 padding-left: 2.5rem;
 padding-bottom: 2.5rem;
