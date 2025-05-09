@@ -8,9 +8,11 @@ align-items: center;
 gap: 30px;
 padding: 40px;
 border-radius: 8px;
-background-color: ${theme.colors.light};
+background-color: rgba(250, 224, 167, 0.9);
 cursor: grab;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+position: relative;
+
 
 div{
     width: 100%;

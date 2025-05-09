@@ -35,6 +35,8 @@ padding-bottom: 0.8rem;
 position: relative;
 text-align: center;
 margin:  2.5rem 0;
+text-shadow: -1px 2px 8px rgb(255, 255, 255);
+
 
 
 &::after {
@@ -46,6 +48,8 @@ margin:  2.5rem 0;
     width: 56px;
     height: .25rem;
     background-color: #61a120;
+    text-shadow: 5px 6px 15px rgb(255, 255, 255);
+
 
 
 }

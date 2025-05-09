@@ -21,7 +21,7 @@ h1{
 `
 
 export const Container = styled.section`
-background: linear-gradient(rgba(255,255,255, 0.4),rgba(255,255,255, 0.4)),
+background: linear-gradient(rgba(41, 39, 39, 0.4),rgba(41, 39, 39, 0.4)),
 
 url('${Background}');
 height: 100%;

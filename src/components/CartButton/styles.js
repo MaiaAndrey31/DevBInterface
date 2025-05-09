@@ -3,7 +3,7 @@ import { theme } from "../../styles/theme";
 
 
 export const ContainerButton = styled.button`
-background-color: ${theme.colors.secondary};
+background-color: ${theme.colors.error};
 width: 100%;
 height: 52px;
 border: 0;
@@ -12,6 +12,6 @@ font-size: 30px;
 color: ${theme.colors.light};
 
 &:hover {
-    background-color: ${theme.colors.primary};
+    background-color: ${theme.colors.secondary};
 }
 `

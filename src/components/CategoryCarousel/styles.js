@@ -29,6 +29,7 @@ padding-bottom: 0.8rem;
 position: relative;
 text-align: center;
 margin-bottom: 2.5rem;
+text-shadow: -1px 0px 9px rgb(251, 255, 0);
 
 
 &::after {
