@@ -16,7 +16,7 @@ h1{
     color: ${theme.colors.lighttext};
     position: absolute;
     right: 10%;
-    top: 5%;
+    top: 20%;
 }
 `
 

@@ -5,10 +5,30 @@ const UserContext =createContext({})
 
 
 export const UserProvider = ({ children }) => {
-    const [userInfo, setUserInfo] = useState({id: 1, name: "Andrey"})
+    const [userInfo, setUserInfo] = useState({})
+
+
+    const putUserData = (userInfo) => {
+        setUserInfo(userInfo)
+
+        localStorage.setItem('monsterburguer: userData', JSON.stringify(userInfo))
+    }
+
+    const logout = () => {
+        setUserInfo({})
+        localStorage.removeItem('monsterburguer: userData')
+    }
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('monsterburguer: userData')
+        if (storedData) {
+            setUserInfo(JSON.parse(storedData))
+
+        }
+    }, [])
 
     return (
-        <UserContext.Provider value={{userInfo}}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{userInfo, putUserData, logout}}>{children}</UserContext.Provider>
     )
 }
 
