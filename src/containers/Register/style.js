@@ -46,11 +46,12 @@ export const Background = styled.div`
 
 export const RightContainer = styled.div`
   width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;  
+  padding: 0 20px;  
   background-image: url(${BG2});  
   background-size: cover;
   z-index: 10;
@@ -59,7 +60,7 @@ export const RightContainer = styled.div`
 export const Title = styled.h2`
   text-align: center;
   font-size: 38px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-family: Lilita One;
   color:${theme.colors.secondary};
   font-weight: 400;
@@ -84,7 +85,7 @@ export const Title = styled.h2`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
   max-width: 400px;
 `
@@ -92,7 +93,7 @@ export const Form = styled.form`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
   justify-content:center;
   
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import MenuBg from '../../assets/MenuBg.svg'
 import { theme } from "../../styles/theme";
 import Background from '../../assets/bg-2.svg'
+import { Link } from "react-router-dom";
 
 
 export const Container = styled.div`
@@ -15,7 +16,7 @@ background:linear-gradient(rgba(41, 39, 39, 0.4),rgba(41, 39, 39, 0.4)), url('${
 
 export const Banner = styled.div`
 display: flex;
-justify-content: center;
+justify-content: space-between;
 align-items: center;
 height: 380px;
 width: 100%;
@@ -44,12 +45,33 @@ h1{
         color: ${theme.colors.secondary};
 
     }
+
 }
+
 
 `
 
 export const CategoriesMenu = styled.div`
+display: flex;
+justify-content: center;
+gap: 50px;
+margin-top: 30px;
+margin-bottom: 20px;
 
+`
+export const CategoryButton = styled(Link)`
+text-decoration: none;
+cursor: pointer;
+background: none;
+color: ${ (props) => props.$isActiveCategory ? `${theme.colors.error}` : `${theme.colors.secondary}`};
+font-size: 28px;
+font-weight: 800;
+font-family: 'Lolita One', sans-serif;
+padding-bottom: 8px;
+line-height: 20px;
+border: none;
+border-bottom: ${ (props) => props.$isActiveCategory &&  `solid 3px ${theme.colors.error}`};
+text-shadow: -1px 0px 9px rgb(229, 255, 0);
 
 `
 
@@ -63,3 +85,4 @@ max-width: 1280px;
 margin: 50px, auto;
 
 `
+
