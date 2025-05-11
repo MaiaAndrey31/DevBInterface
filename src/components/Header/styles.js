@@ -31,12 +31,21 @@ div  {
     align-items: center;
     justify-content: center;
     gap: 20px;
+
+    hr {
+        height: 24px;
+        border: 1px solid ${theme.colors.primary};
+    }
 }
 `
 
 export const HeaderLink = styled(Link)`
-
-color: ${theme.colors.lighttext};
+display: flex;
+align-items: center;
+justify-content: center;
+color: ${props => props.$isActive ? `${theme.colors.primary}` : `${theme.colors.lighttext}`};
+border-bottom:${props => props.$isActive ? `2px solid ${theme.colors.primary}` : 'none'};
+padding-bottom: 5px;
 text-decoration: none;
 font-size: 19px;
 
@@ -58,7 +67,7 @@ export const Profile = styled.div`
 display: flex;
 align-items: center;
 gap: 12px;
-font-size: 18px;
+font-size: 16px;
 
 div{
     flex-direction: column;
@@ -68,9 +77,9 @@ div{
 
 
         span {
-            color: ${theme.colors.secondary};
-            font-weight: 700;
-            font-family: 'Lolita One', cursive;
+            color: ${theme.colors.primary};
+            font-weight: 500;
+            font-family: 'Lolita One', sans-serif;
         }
 
     }
@@ -80,7 +89,7 @@ div{
 export const Logout = styled.button`
 color: ${theme.colors.error};
 text-decoration: none;
-font-size: 16px;
+font-size: 14px;
 font-weight: 700;
 background-color: transparent;
 border: none;
