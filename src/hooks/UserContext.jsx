@@ -1,43 +1,41 @@
 import { useContext, useState, useEffect, createContext } from 'react'
 
-
-const UserContext =createContext({})
-
+const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
-    const [userInfo, setUserInfo] = useState({})
+  const [userInfo, setUserInfo] = useState({})
 
+  const putUserData = (userInfo) => {
+    setUserInfo(userInfo)
 
-    const putUserData = (userInfo) => {
-        setUserInfo(userInfo)
+    localStorage.setItem('monsterburguer: userData', JSON.stringify(userInfo))
+  }
 
-        localStorage.setItem('monsterburguer: userData', JSON.stringify(userInfo))
+  const logout = () => {
+    setUserInfo({})
+    localStorage.removeItem('monsterburguer: userData')
+  }
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('monsterburguer: userData')
+    if (storedData) {
+      setUserInfo(JSON.parse(storedData))
     }
+  }, [])
 
-    const logout = () => {
-        setUserInfo({})
-        localStorage.removeItem('monsterburguer: userData')
-    }
-
-    useEffect(() => {
-        const storedData = localStorage.getItem('monsterburguer: userData')
-        if (storedData) {
-            setUserInfo(JSON.parse(storedData))
-
-        }
-    }, [])
-
-    return (
-        <UserContext.Provider value={{userInfo, putUserData, logout}}>{children}</UserContext.Provider>
-    )
+  return (
+    <UserContext.Provider value={{ userInfo, putUserData, logout }}>
+      {children}
+    </UserContext.Provider>
+  )
 }
 
-export const useUser = () =>{
-    const context = useContext(UserContext)
+export const useUser = () => {
+  const context = useContext(UserContext)
 
-    if(!context){
-        throw new Error("useUser must be used within a UserProvider")
-    }
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider')
+  }
 
-    return context
+  return context
 }

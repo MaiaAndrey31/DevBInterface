@@ -12,24 +12,20 @@ export const CartProvider = ({ children }) => {
     if (cartIndex >= 0) {
       newProducInCart = cartProducts
 
-      newProducInCart[cartIndex].quantity = newProducInCart[cartIndex].quantity +1
+      newProducInCart[cartIndex].quantity =
+        newProducInCart[cartIndex].quantity + 1
       setCartProducts(newProducInCart)
-  } else {
-    
-    product.quantity = 1
-    newProducInCart = [...cartProducts, product]
-    setCartProducts(newProducInCart)
-
-  }
+    } else {
+      product.quantity = 1
+      newProducInCart = [...cartProducts, product]
+      setCartProducts(newProducInCart)
+    }
     updateLocalStorage(newProducInCart)
-}
+  }
 
- 
-  const clearCart = (product) => {
+  const clearCart = () => {
     setCartProducts([])
-      updateLocalStorage([])
-    
-
+    updateLocalStorage([])
   }
 
   const deleteProduct = (productId) => {
@@ -40,38 +36,36 @@ export const CartProvider = ({ children }) => {
   }
 
   const increaseProduct = (productId) => {
-    const newCart = cartProducts.map(prd => {
+    const newCart = cartProducts.map((prd) => {
       return prd.id === productId ? { ...prd, quantity: prd.quantity + 1 } : prd
     })
     setCartProducts(newCart)
-        updateLocalStorage(newCart)
-
+    updateLocalStorage(newCart)
   }
 
   const decreaseProduct = (productId) => {
-    const cartIndex = cartProducts.findIndex(prd => prd.id === productId)
+    const cartIndex = cartProducts.findIndex((prd) => prd.id === productId)
     if (cartProducts[cartIndex].quantity > 1) {
-      const newCart = cartProducts.map(prd => {
-      return prd.id === productId ? { ...prd, quantity: prd.quantity - 1 } : prd
-    })
-    setCartProducts(newCart)
-        updateLocalStorage(newCart)
-
-
+      const newCart = cartProducts.map((prd) => {
+        return prd.id === productId
+          ? { ...prd, quantity: prd.quantity - 1 }
+          : prd
+      })
+      setCartProducts(newCart)
+      updateLocalStorage(newCart)
     } else {
       deleteProduct(productId)
     }
   }
 
-   const updateLocalStorage = (products)=> {
-localStorage.setItem('monsterburguer: cartInfo', JSON.stringify(products))
+  const updateLocalStorage = (products) => {
+    localStorage.setItem('monsterburguer: cartInfo', JSON.stringify(products))
   }
-  useEffect (() =>{
+  useEffect(() => {
     const clientCartData = localStorage.getItem('monsterburguer: cartInfo')
     if (clientCartData) {
       setCartProducts(JSON.parse(clientCartData))
     }
-    
   }, [])
   return (
     <CartContext.Provider
@@ -89,11 +83,11 @@ localStorage.setItem('monsterburguer: cartInfo', JSON.stringify(products))
   )
 }
 
-export const useCart = () =>{
-    const context = useContext(CartContext)
+export const useCart = () => {
+  const context = useContext(CartContext)
 
-    if(!context){
-        throw new Error('useCart must be used within a CartProvider')
-    } 
-    return context
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider')
+  }
+  return context
 }
