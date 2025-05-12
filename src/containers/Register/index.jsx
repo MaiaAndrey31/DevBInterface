@@ -12,14 +12,14 @@ import {
   Link,
   Background
 } from './style'
-import { Button } from '../../components/Button'
+import { Button } from '../../components'
 import Logo from '../../assets/LogoMonster2.png'
 import Fire from '../../assets/fireVid2.mp4'
 import {api} from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function Register() {
+export  function Register() {
   const navigate = useNavigate()
 
 
