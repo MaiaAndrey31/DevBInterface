@@ -8,3 +8,5 @@ export * from './Header'
 export * from './OffersCarousel'
 export * from './Table'
 export * from './Cartitems'
+export * from './CartResume'
+
