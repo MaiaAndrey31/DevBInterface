@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
+import { Bounce, toast } from 'react-toastify'
 import { useCart } from '../../hooks/CartContext'
 import { api } from '../../services/api'
 import { formatPrice } from '../../utils/formatPrice'
@@ -24,34 +24,31 @@ export function CartResume() {
 
   const submitOrder = async () => {
     const products = cartProducts.map((product) => {
-      return { id: product.id, quantity: product.quantity }
+      return {
+        id: product.id,
+        quantity: product.quantity,
+        price: product.price
+      }
     })
 
     try {
-      const { status } = await api.post(
-        '/orders',
-        { products },
+      const { data } = await api.post('/create-payment-intent', { products })
 
-        {
-          validateStatus: () => true
-        }
-      )
-
-      if (status === 200 || status === 201) {
-        
-        setTimeout(() => {
-          navigate('/')
-        }, 2000)
-        clearCart()
-        toast.success('Pedido realizado! ✅')
-      } else if (status === 409) {
-        toast.error('Falha ao realizar pedido. Tente novamente!')
-      } else {
-        throw new Error()
-      }
-    } catch (error) {
-      toast.error('🤔 Falaha no Sistema! Tente novamente!')
+      navigate('/checkout', { state: data })
+    } catch (err) {
+      toast.error('Erro com seu pedido', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark'
+      })
     }
+
+    
   }
 
   return (

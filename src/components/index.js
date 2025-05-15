@@ -9,4 +9,5 @@ export * from './OffersCarousel'
 export * from './Table'
 export * from './Cartitems'
 export * from './CartResume'
+export * from './Stripe/CheckoutForm'
 

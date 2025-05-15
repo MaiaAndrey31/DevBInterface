@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import { Header, Footer } from '../components'
-import { Cart, Home, Menu, Register, Login } from '../containers'
+import { Cart, Home, Menu, Register, Login, Checkout, CompleteOrder } from '../containers'
 
 export const routes = createBrowserRouter([
   {
@@ -35,5 +35,13 @@ export const routes = createBrowserRouter([
   {
     path: '/carrinho',
     element: <Cart />
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />
+  },
+  {
+    path: '/complete',
+    element: <CompleteOrder />
   }
 ])
