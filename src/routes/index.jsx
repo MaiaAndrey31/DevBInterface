@@ -1,4 +1,4 @@
-
+import { Route, Routes } from 'react-router-dom'
 import {
   Cart,
   Home,
@@ -6,8 +6,10 @@ import {
   Register,
   Login,
   Checkout,
-  CompleteOrder
+  CompleteOrder,
+  Admin
 } from '../containers'
+import { AdminLayout } from '../layouts/AdminLayout'
 import { UserLayout } from '../layouts/UserLayout'
 
 export function Router() {
@@ -21,12 +23,16 @@ export function Router() {
         <Route path="/complete" element={<CompleteOrder />} />
       </Route>
 
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/admin/home" element={<Admin />} />
+      </Route>
+
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Register />} />
     </Routes>
   )
 }
-// 
+//
 //   {
 //     path: '/complete',
 //     element: <CompleteOrder />

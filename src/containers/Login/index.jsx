@@ -19,9 +19,9 @@ import Fire from '../../assets/fireVid2.mp4'
 import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 
-export  function Login() {
+export function Login() {
   const navigate = useNavigate()
-  const {putUserData} = useUser()
+  const { putUserData } = useUser()
 
   const schema = yup
     .object({
@@ -43,7 +43,7 @@ export  function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const {status, data: userData } = await api.post(
+      const { status, data: userData } = await api.post(
         '/session',
         {
           email: data.email,
@@ -55,10 +55,13 @@ export  function Login() {
       )
       putUserData(userData)
 
-
       if (status === 200 || status === 201) {
         setTimeout(() => {
-          navigate('/')
+          if (userData?.admin) {
+            navigate('/admin/home')
+          } else {
+            navigate('/')
+          }
         }, 2000)
         toast.success('Olá! Seja Bem Vindo! ✅')
       } else if (status === 409) {
