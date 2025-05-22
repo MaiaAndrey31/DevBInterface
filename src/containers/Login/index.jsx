@@ -58,7 +58,7 @@ export function Login() {
       if (status === 200 || status === 201) {
         setTimeout(() => {
           if (userData?.admin) {
-            navigate('/admin/home')
+            navigate('/admin/orders')
           } else {
             navigate('/')
           }

@@ -7,7 +7,11 @@ import {
   Login,
   Checkout,
   CompleteOrder,
-  Admin
+  Orders,
+  NewProduct,
+  EditProducts,
+  Products,
+  
 } from '../containers'
 import { AdminLayout } from '../layouts/AdminLayout'
 import { UserLayout } from '../layouts/UserLayout'
@@ -24,7 +28,10 @@ export function Router() {
       </Route>
 
       <Route path="/admin" element={<AdminLayout />}>
-        <Route path="/admin/home" element={<Admin />} />
+        <Route path="/admin/orders" element={<Orders />} />
+        <Route path="/admin/newproduct" element={<NewProduct />} />
+        <Route path="/admin/editproducts" element={<EditProducts />} />
+        <Route path="/admin/products" element={<Products />} />
       </Route>
 
       <Route path="/login" element={<Login />} />

@@ -10,4 +10,4 @@ export * from './Table'
 export * from './Cartitems'
 export * from './CartResume'
 export * from './Stripe/CheckoutForm'
-
+export * from './SideMenu'
