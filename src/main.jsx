@@ -7,6 +7,7 @@ import AppProvider from './hooks'
 import { Router } from './routes'
 import { Elements } from '@stripe/react-stripe-js'
 import stripePromise from './config/stripeConfig'
+import { Login } from './containers'
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
