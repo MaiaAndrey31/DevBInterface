@@ -12,10 +12,19 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowDown'
 
 import { useState } from 'react'
 import { TableHead } from '@mui/material'
+import { FormatDate } from '../../../utils/date'
+import { ProductImage, SelectStatus } from './styles'
+import { orderStatusOptions } from './orderStatus'
+import { api } from '../../../services/api'
 
 export function Row(props) {
   const { row } = props
   const [open, setOpen] = useState(false)
+
+
+  async function NewStatusOrder(id, status) {
+    await api.put(`/orders/${id}`, {status} )
+  }
 
   return (
     <>
@@ -32,9 +41,16 @@ export function Row(props) {
         <TableCell component="th" scope="row">
           {row.orderId}
         </TableCell>
-        <TableCell >{row.name}</TableCell>
-        <TableCell >{row.date}</TableCell>
-        <TableCell >{row.status}</TableCell>
+        <TableCell>{row.name}</TableCell>
+        <TableCell>{FormatDate(row.date)}</TableCell>
+        <TableCell>
+          <SelectStatus
+            options={orderStatusOptions.filter((status) => status.id !== 0)}
+            placeholder="Status"
+            defaultValue={orderStatusOptions.find((status) => status.value === row.status || null)}
+            onChange={status => NewStatusOrder(row.orderId, status.value)}
+          />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -48,9 +64,8 @@ export function Row(props) {
                   <TableRow>
                     <TableCell>Quantidade</TableCell>
                     <TableCell>Produto</TableCell>
-                    <TableCell >Categoria</TableCell>
-                    <TableCell >   
-                    </TableCell>
+                    <TableCell>Categoria</TableCell>
+                    <TableCell> Imagem do Produto</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -60,9 +75,9 @@ export function Row(props) {
                         {product.id}
                       </TableCell>
                       <TableCell>{product.name}</TableCell>
-                      <TableCell align="right">{product.category}</TableCell>
-                      <TableCell align="right" >
-                        <img src={product.url} alt={product.name}/>
+                      <TableCell>{product.category}</TableCell>
+                      <TableCell>
+                        <ProductImage src={product.url} alt={product.name} />
                       </TableCell>
                     </TableRow>
                   ))}
@@ -86,12 +101,11 @@ Row.propTypes = {
         id: PropTypes.number.isRequired,
         category: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        price:PropTypes.number.isRequired,
+        price: PropTypes.number.isRequired,
         quantity: PropTypes.number.isRequired,
-        url: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired
       })
     ).isRequired,
-    status: PropTypes.string.isRequired,
-    
+    status: PropTypes.string.isRequired
   }).isRequired
 }
