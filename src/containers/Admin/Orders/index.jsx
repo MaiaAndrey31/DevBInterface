@@ -19,9 +19,12 @@ export function Orders() {
 useEffect(() => {
   async function loadOrders(){
     const {data} = await api.get('/orders')
+    
 
     setOrders(data)
+    console.log(data)
   }
+  
   loadOrders()
 }, [])
 
@@ -29,12 +32,13 @@ useEffect(() => {
 function createData(order) {
   return {
     name: order.user.name,
-    OrderId: order._id,
+    orderId: order._id,
     date: order.createdAt,
     status: order.status,
     products: order.products,
     
   }
+  
 }
 
 useEffect(() =>{
@@ -50,8 +54,7 @@ useEffect(() =>{
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <TableCell />
-            <TableCell></TableCell>
+            <TableCell />            
             <TableCell >Pedido</TableCell>
             <TableCell >Cliente</TableCell>
             <TableCell>Data do pedido</TableCell>
