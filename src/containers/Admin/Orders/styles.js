@@ -9,7 +9,7 @@ border-radius:16px;
 
 
 export const SelectStatus = styled(Select)`
-width: 240px;
+width: 200px;
 `
 
 
