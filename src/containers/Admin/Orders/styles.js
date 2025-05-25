@@ -19,7 +19,7 @@ export const Filter = styled.div`
 display: flex;
 justify-content: center;
 margin: 28px 0;
-gap: 50px;
+gap: 30px;
 `
 
 export const FilterOption = styled.button`
