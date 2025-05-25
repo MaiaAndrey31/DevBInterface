@@ -76,12 +76,12 @@ export function Orders() {
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
-          <TableRow>
+          <TableRow style={{background: '#333333'}}>
             <TableCell />
-            <TableCell>Pedido</TableCell>
-            <TableCell>Cliente</TableCell>
-            <TableCell>Data do pedido</TableCell>
-            <TableCell>Status</TableCell>
+            <TableCell style={{color: 'white', fontWeight: 700, fontSize: '18px'}}>Pedido</TableCell>
+            <TableCell style={{color: 'white', fontWeight: 700, fontSize: '18px'}}>Cliente</TableCell>
+            <TableCell style={{color: 'white', fontWeight: 700, fontSize: '18px'}}>Data do pedido</TableCell>
+            <TableCell style={{color: 'white', fontWeight: 700, fontSize: '18px'}}>Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

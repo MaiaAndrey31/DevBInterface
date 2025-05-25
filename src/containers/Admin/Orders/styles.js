@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Select from 'react-select'
 import {theme} from '../../../styles/theme'
+
+
 export const ProductImage = styled.img`
 height: 80px;
 padding: 12px;
