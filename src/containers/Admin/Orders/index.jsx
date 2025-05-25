@@ -58,6 +58,19 @@ export function Orders() {
 
   }
 
+  useEffect(() => {
+
+if (activeStatus === 0){
+  setFilteredOrders(orders)
+} else{
+  const statusIndex = orderStatusOptions.findIndex(item => item.id === activeStatus)
+  const newFilteredOrders = orders.filter(order =>order.status ===orderStatusOptions[statusIndex].value )
+
+setFilteredOrders(newFilteredOrders)
+}
+
+  },[orders])
+
   return (
     <>
     <Filter>
