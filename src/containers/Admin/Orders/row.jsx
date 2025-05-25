@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowDown'
 
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { TableHead } from '@mui/material'
 import { FormatDate } from '../../../utils/date'
 import { ProductImage, SelectStatus } from './styles'
@@ -64,6 +64,7 @@ export function Row({ row, orders, setOrders }) {
             )}
             onChange={(status) => NewStatusOrder(row.orderId, status.value)}
             isLoading={loading}
+            menuPortalTarget={document.body}
 
           />
         </TableCell>
