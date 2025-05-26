@@ -28,7 +28,7 @@ const schema = yup.object({
     .required('Digite o preço do produto')
     .typeError('Digite o preço do produto'),
   category: yup.object().required('Escolha uma categoria'),
-  offer: yup.boolean()
+  offer: yup.boolean(),
 })
 
 export function EditProducts() {
@@ -37,7 +37,7 @@ export function EditProducts() {
   const navigate = useNavigate()
 
   const {
-    state: { product }
+    state: { product },
   } = useLocation()
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function EditProducts() {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
   const onSubmit = async (data) => {
     const productFormData = new FormData()
@@ -65,6 +65,7 @@ export function EditProducts() {
     productFormData.append('category_id', data.category.id)
     productFormData.append('file', data.file[0])
     productFormData.append('offer', data.offer)
+    
 
     await toast.promise(api.put(`/products/${product.id}`, productFormData), {
       pending: 'Editando produto',
@@ -73,8 +74,11 @@ export function EditProducts() {
     })
     setTimeout(() =>{
       navigate('/admin/produtos')
+          
+
 
     }, 2000)
+    console.log(data)
   }
 
   return (
@@ -148,7 +152,7 @@ export function EditProducts() {
           </CheckBoxInput>
         </InputGroup>
 
-        <SubmitButton>Editar Produto</SubmitButton>
+        <SubmitButton >Editar Produto</SubmitButton>
       </Form>
     </Container>
   )
