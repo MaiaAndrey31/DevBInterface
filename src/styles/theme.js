@@ -12,6 +12,8 @@ export const theme = {
     warning: '#FFC107',
     info: '#016BF8',
     light: '#fff9f1',
-    dark: '#333333'
+    dark: '#333333',
+    lightred: '#f66160'
+    
   }
 }

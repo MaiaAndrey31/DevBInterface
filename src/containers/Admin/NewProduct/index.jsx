@@ -12,26 +12,41 @@ import {
   LabelUpload,
   Select,
   SubmitButton,
-  ErrorMessage
+  ErrorMessage,
+  CheckBoxInput
 } from './styles'
 import { useEffect, useState } from 'react'
 import { api } from '../../../services/api'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const schema = yup.object({
   firstName: yup.string().required('Digite o nome do produto'),
-  price: yup.number().positive().required('Digite o preço do produto').typeError('Digite o preço do produto'),
+  price: yup
+    .number()
+    .positive()
+    .required('Digite o preço do produto')
+    .typeError('Digite o preço do produto'),
   category: yup.object().required('Escolha uma categoria'),
-  file: yup.mixed().test('required', 'Escolha um arquivo', value => {
-    return value && value.length > 0
-  }).test('fileSize', 'Somente arquivos PNG ou JPEG', value => {
-    return value && value.length && (value[0].type === 'image/png' || value[0].type === 'image/jpeg')
-  })
+  offer: yup.boolean(),
+  file: yup
+    .mixed()
+    .test('required', 'Escolha um arquivo', (value) => {
+      return value && value.length > 0
+    })
+    .test('fileSize', 'Somente arquivos PNG ou JPEG', (value) => {
+      return (
+        value &&
+        value.length &&
+        (value[0].type === 'image/png' || value[0].type === 'image/jpeg')
+      )
+    })
 })
 
 export function NewProduct() {
   const [fileName, setFileName] = useState(null)
   const [categories, setCategories] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function loadCategories() {
@@ -57,12 +72,17 @@ export function NewProduct() {
     productFormData.append('price', data.price)
     productFormData.append('category_id', data.category.id)
     productFormData.append('file', data.file[0])
+    productFormData.append('offer', data.offer)
 
-    await toast.promise( api.post('/products', productFormData),{
+    await toast.promise(api.post('/products', productFormData), {
       pending: 'Criando produto',
       success: 'Produto criado com sucesso',
       error: 'Erro ao criar produto'
     })
+    setTimeout(() =>{
+      navigate('/admin/produtos')
+
+    }, 2000)
   }
 
   return (
@@ -102,7 +122,7 @@ export function NewProduct() {
           <Controller
             name="category"
             control={control}
-            render={({field}) => (
+            render={({ field }) => (
               <Select
                 {...field}
                 options={categories}
@@ -114,6 +134,15 @@ export function NewProduct() {
             )}
           />
           <ErrorMessage>{errors?.category?.message}</ErrorMessage>
+        </InputGroup>
+        <InputGroup>
+          <CheckBoxInput>
+            <input
+              type="checkbox"
+              {...register('offer')}
+            />
+            <Label>Produto em Oferta</Label>
+          </CheckBoxInput>
         </InputGroup>
 
         <SubmitButton>Adicionar Produto</SubmitButton>
