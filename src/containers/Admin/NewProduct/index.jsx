@@ -21,7 +21,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 const schema = yup.object({
-  firstName: yup.string().required('Digite o nome do produto'),
+  name: yup.string().required('Digite o nome do produto'),
   price: yup
     .number()
     .positive()
@@ -69,7 +69,7 @@ export function NewProduct() {
     const productFormData = new FormData()
 
     productFormData.append('name', data.name)
-    productFormData.append('price', data.price)
+    productFormData.append('price', data.price*100)
     productFormData.append('category_id', data.category.id)
     productFormData.append('file', data.file[0])
     productFormData.append('offer', data.offer)
@@ -80,7 +80,7 @@ export function NewProduct() {
       error: 'Erro ao criar produto'
     })
     setTimeout(() =>{
-      navigate('/admin/produtos')
+      navigate('/admin/products')
 
     }, 2000)
   }

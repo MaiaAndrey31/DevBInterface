@@ -13,15 +13,14 @@ import {
   LabelUpload,
   Select,
   SubmitButton,
-  ErrorMessage
+  ErrorMessage,CheckBoxInput
 } from './styles'
 import { useEffect, useState } from 'react'
 import { api } from '../../../services/api'
 import { toast } from 'react-toastify'
-import { CheckBoxInput } from './styles'
 
 const schema = yup.object({
-  firstName: yup.string().required('Digite o nome do produto'),
+  name: yup.string().required('Digite o nome do produto'),
   price: yup
     .number()
     .positive()
@@ -61,7 +60,7 @@ export function EditProducts() {
     const productFormData = new FormData()
 
     productFormData.append('name', data.name)
-    productFormData.append('price', data.price)
+    productFormData.append('price', data.price*100)
     productFormData.append('category_id', data.category.id)
     productFormData.append('file', data.file[0])
     productFormData.append('offer', data.offer)
@@ -73,7 +72,7 @@ export function EditProducts() {
       error: 'Erro ao editar produto'
     })
     setTimeout(() =>{
-      navigate('/admin/produtos')
+      navigate('/admin/products')
           
 
 
@@ -152,7 +151,7 @@ export function EditProducts() {
           </CheckBoxInput>
         </InputGroup>
 
-        <SubmitButton >Editar Produto</SubmitButton>
+        <SubmitButton type='submit' >Editar Produto</SubmitButton>
       </Form>
     </Container>
   )
