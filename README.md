@@ -1,54 +1,87 @@
-# DevBurguer Interface
+# DevBurguer - Interface Web
 
-This project is a React-based frontend application built with Vite. It provides a user-friendly interface for browsing product categories and special offers, along with user authentication features including login and registration.
+Bem-vindo ao DevBurguer, uma aplicação web moderna para gerenciamento de pedidos de um restaurante de hambúrgueres. Desenvolvida com React e Vite, esta interface oferece uma experiência completa para clientes e administradores.
 
-## Features
+## 🚀 Funcionalidades
 
-- Home page with carousels displaying product categories and special offers.
-- User authentication with login and registration forms.
-- Form validation using react-hook-form and yup.
-- Responsive and styled UI using styled-components.
-- Notifications using react-toastify.
+- 🍔 Catálogo de produtos com categorias
+- 🛒 Carrinho de compras integrado
+- 💳 Pagamento via Stripe
+- 👨‍💼 Área administrativa
+- 🔄 Interface responsiva e moderna
+- 🔒 Autenticação de usuários
+- 📱 Design responsivo para todos os dispositivos
 
-## Technologies Used
+## 🛠️ Tecnologias Utilizadas
 
-- React 18
-- Vite
-- React Router DOM for routing
-- Styled-components for styling
-- React Hook Form and Yup for form handling and validation
-- Axios for API requests
-- React Toastify for notifications
-- React Multi Carousel for carousel components
+- **Frontend**:
+  - React 18
+  - Vite
+  - Styled Components
+  - Material-UI (MUI)
+  - React Hook Form + Yup para validações
+  - React Router DOM para navegação
+  - React Multi Carousel para exibição de produtos
+  - Axios para requisições HTTP
+  - React Toastify para notificações
+  - Stripe para processamento de pagamentos
 
-## Installation
+## 🚀 Como Executar o Projeto
 
-1. Clone the repository:
+### Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+- Chaves de API do Stripe (opcional para desenvolvimento local)
+
+### Instalação
+
+1. Clone o repositório:
    ```bash
-   git clone <repository-url>
+   git clone <url-do-repositório>
    ```
-2. Navigate to the project directory:
+
+2. Acesse a pasta do projeto:
    ```bash
    cd DevBurguerInterface/DevBInterface
    ```
-3. Install dependencies:
-   ```bash
-   yarn install
-   ```
-   or
+
+3. Instale as dependências:
    ```bash
    npm install
+   # ou
+   yarn
    ```
 
-## Usage
+4. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+   ```
+   VITE_API_URL=sua_url_da_api
+   VITE_STRIPE_PUBLIC_KEY=sua_chave_publica_do_stripe
+   ```
 
-To start the development server, run:
-```bash
-yarn dev
-```
-or
-```bash
-npm run dev
+5. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
+
+   O projeto estará disponível em `http://localhost:5173`
+
+## 📦 Scripts Disponíveis
+
+- `dev`: Inicia o servidor de desenvolvimento
+- `build`: Gera a versão de produção
+- `preview`: Previsualiza a build de produção localmente
+- `lint`: Executa a análise de código
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 🤝 Contribuição
+
+Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests.
 ```
 
 The app will be available at `http://localhost:3000` (or the port Vite assigns).
